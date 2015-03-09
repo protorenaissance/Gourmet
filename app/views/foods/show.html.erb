@@ -1,2 +1,9 @@
-<h1>Foods#show</h1>
-<p>Find me in app/views/foods/show.html.erb</p>
+<p><%= flash[:alert] %></p>
+<h2>Gourmet Information</h2>
+
+<div style="border:1px solid #fff">
+	<h4>Title: <%= @post.title %></h4>
+	<p style="color:#ff0000">Category : <%= @post.category %></p>
+	<p>Content: <%= @post.content %></p>
+	<p><a href="/">Back to the whole lists</a></p>
+</div>

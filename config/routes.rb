@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
 
 	get "/:category"=>"foods#posts_category"
-  get 'foods/show'
-
+	get 'foods/show/:id'=>'foods#show'
   get 'foods/write'
 
   get 'foods/write_complete'
