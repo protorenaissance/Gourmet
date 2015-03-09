@@ -1,2 +1,16 @@
-<h1>Foods#edit</h1>
-<p>Find me in app/views/foods/edit.html.erb</p>
+<p><%= flash[:alert] %></p>
+<h2>Edit the gourmet</h2>
+
+<form action="/foods/edit_complete" method="post">
+	<input type="hidden" name="id" value="<%= @post.id %>">
+	<p style="color:#ff0000">Category:
+	<select name="post_category">
+		<option value="Korean">Korean</option>
+		<option value="Japanese">Japanese</option>
+		<option value="Chinese">Chinese</option>
+		<option value="Western">Western</option>
+	</select></p>
+	<p> Title: <input type="text" name="post_title" value="<%= @post.title %>"></p>
+	<p> Content: <textarea name="post_content"><%= @post.content %></textarea></p>
+	<input type="submit" value="Edit">
+</form>

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   post 'foods/write_complete'
 
-  get 'foods/edit'
+  get 'foods/edit/:id'=>'foods#edit'
 
-  get 'foods/edit_complete'
+  post 'foods/edit_complete'
 
   get 'foods/delete_complete'
 
