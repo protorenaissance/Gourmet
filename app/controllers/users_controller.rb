@@ -22,6 +22,18 @@ class UsersController < ApplicationController
   end
 
   def login_complete
+		user=User.where(username:params[:username])[0]
+		if user.nil?
+			flash[:alert]="The account doesn't exist"
+			redirect_to:back
+		elsif user.password==params[:password]
+			flash[:alert]="Successfully Log Ined!"
+			session[:user_id]=user.id
+			redirect_to "/"
+		else
+			flash[:alert]="Your password is wrong"
+			redirect_to :back
+		end
   end
 
   def logout_complete
