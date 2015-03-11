@@ -10,7 +10,7 @@
 	<p><a href="/foods/delete_complete/<%= @post.id %>">Delete</a></p>
 <hr>
 	<% @post.comments.each do |comment| %>
-	<p><strong>ID</strong> <%= comment.content %></p>
+	<p><strong>ID</strong> <%= comment.content %>|<a href="/foods/delete_comment_complete/<%= comment.id %>">Delete</a></p>
 	<% end %>
 	<form action="/foods/write_comment_complete" method="post">
 		<input type="hidden" name="post_id" value="<%= @post.id %>">

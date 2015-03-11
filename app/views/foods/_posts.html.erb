@@ -3,5 +3,6 @@
   <a href="/foods/show/<%= post.id %>"><h4><%= post.title %></h4></a>
   <p style="color: #ff0000"><%= post.category %></p>
   <p>작성자 아이디</p>
+	<p>Number of Comments : <%= post.comments.size %></p>
 </div>
 <% end %>
