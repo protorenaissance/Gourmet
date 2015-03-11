@@ -8,4 +8,12 @@
 	<p><a href="/">Back to the whole lists</a></p>
 	<p><a href="/foods/edit/<%= @post.id %>">Edit</a></p>
 	<p><a href="/foods/delete_complete/<%= @post.id %>">Delete</a></p>
+<hr>
+	<% @post.comments.each do |comment| %>
+	<p><strong>ID</strong> <%= comment.content %></p>
+	<% end %>
+	<form action="/foods/write_comment_complete" method="post">
+		<input type="hidden" name="post_id" value="<%= @post.id %>">
+		<p>Writer's ID: <input type="text" name="comment_content" placeholder="Input a comment"><input type="submit" value="Close"></p>
+	</form>
 </div>

@@ -62,4 +62,12 @@ class FoodsController < ApplicationController
 		flash[:alert]="Successfully Deleted!"
 		redirect_to "/"
   end
+	def write_comment_complete
+		comment=Comment.new
+		comment.post_id=params[:post_id]
+		comment.content=params[:comment_content]
+		comment.save
+		flash[:alert]="Made a new comment"
+		redirect_to "/foods/show/#{comment.post_id}"
+	end
 end
