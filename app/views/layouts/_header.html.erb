@@ -1,2 +1,6 @@
 <h4><a href="/">Codelion 맛집 평가</a> || <a href="/korean">한식</a> | <a href="/japanese">일식</a> | <a href="/chinese">중식</a> | <a href="/western">양식</a><a href="/foods/write">Write</a></h4>
+<% if session[:user_id].nil? %>
 <a href="/users/signup">Sign up</a>|<a href="/users/login">Log In</a>
+<% else %>
+<a href="/users/logout_complete">Log Out</a>
+<% end %>
