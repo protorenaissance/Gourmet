@@ -43,7 +43,12 @@ class FoodsController < ApplicationController
 	end
 
   def edit
-		@post=Post.find(params[:id])
+		if session[:user_id]!=Post.find(params[:id]).user.id
+			flash[:alert]="This post is other's."
+			redirect_to:back
+		else
+			@post=Post.find(params[:id])
+		end
   end
 
   def edit_complete
@@ -61,10 +66,15 @@ class FoodsController < ApplicationController
   end
 
   def delete_complete
-		post=Post.find(params[:id])
-		post.destroy
-		flash[:alert]="Successfully Deleted!"
-		redirect_to "/"
+		if session[:user_id]!=Post.find(params[:id]).user.id
+			flash[:alert]="You can't delete other's"
+			redirect_to:back
+		else
+			post=Post.find(params[:id])
+			post.destroy
+			flash[:alert]="Successfully Deleted!"
+			redirect_to "/"
+		end
   end
 	def write_comment_complete
 		comment=Comment.new
@@ -76,9 +86,14 @@ class FoodsController < ApplicationController
 		redirect_to "/foods/show/#{comment.post_id}"
 	end
 	def delete_comment_complete
-		comment=Comment.find(params[:id])
-		comment.destroy
-		flash[:alert]="Successfully deleted!"
-		redirect_to "/foods/show/#{comment.post_id}"
+		if session[:user_id]!=Comment.find(params[:id]).user.id
+			flash[:alert]="You cannot delete other's comments"
+			redirect_to:back
+		else
+			comment=Comment.find(params[:id])
+			comment.destroy
+			flash[:alert]="Successfully deleted!"
+			redirect_to "/foods/show/#{comment.post_id}"
+		end
 	end
 end
