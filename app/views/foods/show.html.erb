@@ -2,6 +2,7 @@
 <h2>Gourmet Information</h2>
 
 <div style="border:1px solid #fff">
+	<p><img src="<%= @post.image_url(:medium) %>"></p>
 	<h4>Title: <%= @post.title %></h4>
 	<p style="color:#ff0000">Category : <%= @post.category %></p>
 	<p>Content: <%= @post.content %></p>
@@ -12,7 +13,7 @@
 	<% @post.comments.each do |comment| %>
 	<p><strong><%= comment.user.username %></strong> <%= comment.content %>|<a href="/foods/delete_comment_complete/<%= comment.id %>">Delete</a></p>
 	<% end %>
-	<form action="/foods/write_comment_complete" method="post">
+	<form action="/foods/write_comment_complete" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="post_id" value="<%= @post.id %>">
 	<% if !@comment_writer.nil? %>
 		<p><%= @comment_writer.username %>: <input type="text" name="comment_content" placeholder="Input a comment"><input type="submit" value="Close"></p>
