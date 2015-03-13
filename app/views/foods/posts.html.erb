@@ -1,9 +1,14 @@
-<%= flash[:alert] %>
-<div>
-	<h2>Welcome to the Gourmet of Codelion!</h2>
-	<p>Let us know gourmets you guys know</p>
+<div class="container"> 
+	<% if !flash[:alert].nil? %>
+	<div class="alert alert-danger">
+		<%= flash[:alert] %>
+	</div>
+	<% end %>
+
+	<div class="well text-center">
+		<h3>Welcome to the Codelion Gourmet!</h3>
+		<p>Let us know the best gourmet you know!</p>
+	</div>
+
+	<%= render partial:"foods/posts" %>
 </div>
-
-<hr>
-
-<%= render partial:"foods/posts" %>
