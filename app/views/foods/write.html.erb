@@ -1,16 +1,32 @@
-<p><%= flash[:alert] %></p>
-<h2>Add a gourmet</h2>
+<div class="container">
+	<% if !flash[:alert].nil? %>
+	<div class="alert alert-danger">
+		<%= flash[:alert] %>
+	</div>
+	<% end %>
 
-<form action="/foods/write_complete" method="post" enctype="multipart/form-data">
-	<p style="color:#ff0000">Category:
-	<select name="post_category">
-		<option value="Korean">Korean</option>
-		<option value="Japanese">Japanese</option>
-		<option value="Chinese">Chinese</option>
-		<option value="Western">Western</option>
-	</select></p>
-	<p>Title : <input type="text" name="post_title" placeholder="Type a title"></p>
-	<p>Content : <textarea name="post_content" placeholder="Type a content"></textarea>
-	<p>Image Upload : <input type="file" name="image"></p>
-	<input type="submit" value="Add">
-</form>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4 text-center">
+			<h3 class="form-heading">Add a gourmet</h3>
+
+			<form action="/foods/write_complete" method="post" enctype="multipart/form-data">
+				<p>+Category
+				<select name="post_category">
+					<option value="Korean">Korean</option>
+					<option value="Japanese">Japanese</option>
+					<option value="Chinese">Chinese</option>
+					<option value="Western">Western</option>
+				</select></p>
+				<p><input class="form-input" type="text" name="post_title" placeholder="Input a title"></p>
+				<p><textarea class="form-textarea" name="post_content" placeholder="Input a content"></textarea></p>
+				<p>+Image Upload </p>
+				<p><input type="file" name="image"></p>
+				<input class="btn btn-lg btn-block" type="submit" value="Add">
+			</form>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>
