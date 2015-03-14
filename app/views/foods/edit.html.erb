@@ -1,16 +1,32 @@
-<p><%= flash[:alert] %></p>
-<h2>Edit the gourmet</h2>
+<div class="container">
+	<% if !flash[:alert].nil? %>
+	<div class="alert alert-danger">
+		<%= flash[:alert] %>
+	</div>
+	<% end %>
 
-<form action="/foods/edit_complete" method="post">
-	<input type="hidden" name="id" value="<%= @post.id %>">
-	<p style="color:#ff0000">Category:
-	<select name="post_category">
-		<option value="Korean">Korean</option>
-		<option value="Japanese">Japanese</option>
-		<option value="Chinese">Chinese</option>
-		<option value="Western">Western</option>
-	</select></p>
-	<p> Title: <input type="text" name="post_title" value="<%= @post.title %>"></p>
-	<p> Content: <textarea name="post_content"><%= @post.content %></textarea></p>
-	<input type="submit" value="Edit">
-</form>
+
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4 text-center">
+			<h3 class="form-heading">Edit a gourmet</h3>
+
+			<form action="/foods/edit_complete" method="post">
+				<input type="hidden" name="id" value="<%= @post.id %>">
+				<p>+Category</p>
+				<select name="post_category">
+					<option value="Korean">Korean</option>
+					<option value="Japanese">Japanese</option>
+					<option value="Chinese">Chinese</option>
+					<option value="Western">Western</option>
+				</select></p>
+				<p><input class="form-input" type="text" name="post_title" value="<%= @post.title %>"></p>
+				<textarea class="form-textarea" name="post_content"><%= @post.content %></textarea></p>
+				<input class="btn btn-lg btn-block" type="submit" value="Edit">
+			</form>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>
